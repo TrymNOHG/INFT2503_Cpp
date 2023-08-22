@@ -15,63 +15,54 @@ bool containsWord(const char *sentence, const char *word);
 std::vector<int> find_all_instance_of(const char *phrase, const char *sentence);
 
 int main() {
-    std::string word1("Hello");
-    std::string word2("Im");
-    std::string word3("Trym");
+    char word1[] = "Hello";
+    char word2[] = "Im";
+    char word3[] = "Trym";
 
-    std::cout << "Oppgave 4.\n\nDel A. \n\n";
+    print_word(word1);
+    print_word(word2);
+    print_word(word3);
 
-    std::cout << word1 << "\n";
-    std::cout << word2 << "\n";
-    std::cout << word3 << "\n";
+    char *sentence = create_sentence(word1, word2, word3);
+    std::cout << "\nThe sentence is:\n";
+    print_word(sentence);
 
-    std::cout << "\nDel B\n";
+    std::cout << "\nLength of word 1: " << strlen(word1) << "\n";
+    std::cout << "Length of word 2: " << strlen(word2) << "\n";
+    std::cout << "Length of word 3: " << strlen(word3) << "\n";
+    std::cout << "Length of sentence: " << strlen(sentence) << "\n";
 
-    std::string sentence(word1 + " " + word2 + " " + word3 + ".");
-    std::cout << "\nThe sentence is:\n" << sentence << "\n";
+    char *sentence2 = (char *) malloc(sizeof(char) * strlen(sentence));
 
-    std::cout << "\nDel C\n";
-    std::cout << "\nLength of word 1: " << word1.length() << "\n";
-    std::cout << "Length of word 2: " << word2.length() << "\n";
-    std::cout << "Length of word 3: " << word3.length() << "\n";
-    std::cout << "Length of sentence: " << sentence.length() << "\n";
-
-    //Del D
-    std::string sentence2 = sentence;
-
-    std::cout << "\nDel E\n";
+    copy_word_to_char_ptr(sentence, sentence2);
 
     //Change characters 10-12 in sentence 2 to x's
-    sentence2.replace(10, 3, "xxx");
+    make_text_confidential(sentence2, 'x', 10, 12);
 
-    std::cout << "\nSentence is:\n" << sentence << "\n";
+    std::cout << "\nSentence is:\n";
+    print_word(sentence);
+    std::cout << "\n";
 
-    std::cout << "\nSentence2 is:\n" << sentence2 << "\n";
+    std::cout << "Sentence2 is:\n";
+    print_word(sentence2);
 
+    int length = 5;
+    char *sentence_start = (char *) malloc(sizeof(char) * length);
+    copyStrFrom(sentence, length, sentence_start);
 
-    std::string sentence_start = sentence.substr(0, 5);
+    std::cout << "\nsentence is:\n";
+    print_word(sentence);
 
-    std::cout << "\nDel F\n";
+    std::cout << "\nsentence_start is:\n";
+    print_word(sentence_start);
+    std::cout << "\n";
 
-    std::cout << "\nSentence is:\n" << sentence << "\n";
-
-    std::cout << "\nSentence_start is:\n" << sentence_start << "\n";
-
-    std::cout << "\nDel G\n";
-
-    size_t firstOccurrence = sentence.find("hallo");
-    if(firstOccurrence == std::string::npos) {
-        std::cout << "No matches" << "\n";
-    } else {
-        std::cout << "Yes, there is a match, where the first one is: " << firstOccurrence << "\n";
-    }
-
-    std::cout << "\nDel H\n";
+    std::cout << containsWord("Hello my name is Trym", "hallo") << "\n";
+    std::cout << containsWord("Hello my name is Trym", "my name") << "\n";
 
     std::cout << "\nIndex of instances of phrase 'Im' in Hello Im Trym." << "\n";
-
-    for(auto &index : find_all_instance_of("Im", sentence.c_str())){
-        std::cout << index << " ";
+    for(auto &index : find_all_instance_of("Im", sentence)){
+        std::cout << index;
     }
     std::cout << std::endl;
 
