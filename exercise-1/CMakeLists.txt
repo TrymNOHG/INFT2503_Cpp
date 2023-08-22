@@ -3,5 +3,7 @@ project(exercise_1)
 
 set(CMAKE_CXX_STANDARD 17)
 
+add_compile_options(-Wall -Wextra)
+
 add_executable(exercise_1A PartA.cpp)
 add_executable(exercise_1B PartB.cpp)
