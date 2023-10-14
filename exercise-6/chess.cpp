@@ -191,23 +191,6 @@ public:
         };
     }
 
-//    void print_board() {
-//        for(int i = 0; i < squares.size(); i++) {
-//            for(int j = 0; j < squares[0].size(); j++) {
-//                if(squares[j][i] != nullptr){
-//                    this->chessboard[2 + 2 * i][5 + j * 6] = squares[j][i]->symbol;
-//                }
-//            }
-//        }
-//
-//        for (auto& row : this->chessboard) {
-//            for(auto& column : row){
-//                std::cout << column;
-//            }
-//            std::cout << '\n';
-//        }
-//    }
-
 };
 
 int main() {
